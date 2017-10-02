@@ -4,10 +4,12 @@ import { ReactiveFormsModule }   from '@angular/forms';
 
 import { AppComponent } 	       from './app.component';
 import { FavoriteDirective }     from './favorite.directive';
-import { CategoryListPipe }      from './category-list.pipe';
-import { MediaItemListComponent }from './media-item-list.component';
-import { MediaItemComponent }    from './media-item.component';
-import { MediaItemFormComponent }from './media-item-form.component';
+import { CategoryListPipe }             from './category-list.pipe';
+import { MediaItemListComponent }       from './media-item-list.component';
+import { MediaItemComponent }           from './media-item.component';
+import { MediaItemFormComponent }       from './media-item-form.component';
+import { MediaItemService }             from './media-item.service';
+import { lookupListToken, lookupLists } from './providers';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,12 @@ import { MediaItemFormComponent }from './media-item-form.component';
     BrowserModule,
     ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    MediaItemService,
+    { provide: lookupListToken, useValue: lookupLists}
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

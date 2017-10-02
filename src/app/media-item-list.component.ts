@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component } 		from '@angular/core';
+import { MediaItemService } from './media-item.service';
+
 
 @Component({
 	selector: 'mw-media-item-list',
@@ -7,27 +9,16 @@ import { Component } from '@angular/core';
 })
 
 export class MediaItemListComponent{
-	onMediaItemDelete(mediaItem){
-  	
-	};
+	mediaItems;
 
-	mediaItems = [{
-		id: 1,
-		name: "firebug1",
-		medium: "series1",
-		category: "category1",
-		year: 2011,
-		watchedOn: 11111,
-		isFavorite: false
-	},
-	{
-		id: 2,
-		name: "firebug2",
-		medium: "series2",
-		category: "category2",
-		year: 2012,
-		watchedOn: 22222,
-		isFavorite: false
-	}]
+	constructor(private mediaItemService: MediaItemService){};
+
+	ngOnInit(){
+		this.mediaItems = this.mediaItemService.get();
+	}
+
+	onMediaItemDelete(mediaItem){
+		this.mediaItemService.delete(mediaItem);
+	};
 }
 
