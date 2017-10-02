@@ -1,17 +1,29 @@
+import { Injectable } from '@angular/core';
+import { Http, URLSearchParams } from '@angular/http';
+import 'rxjs/add/operator/map';
+
+@Injectable()
 export class MediaItemService{
-	get(){
-		return this.mediaItems;
+	constructor(private http: Http){};
+
+
+	get(medium){
+		let searchParams = new URLSearchParams();
+		searchParams.append('medium', medium);
+		return this.http.get('mediaitems', {search: searchParams})
+			.map(response => {
+				return response.json().mediaItems;
+			});
 	};
 	
 	add(mediaItem){
-		this.mediaItems.push(mediaItem);
+		return this.http.post('mediaitems', mediaItem)
+			.map(response => {});
 	};
 
 	delete(mediaItem){
-		let index = this.mediaItems.indexOf(mediaItem);
-		if (index > 0){
-			this.mediaItems.splice(index, 1);
-		}
+		return this.http.delete(`mediaitems/${mediaItem.id}`)
+			.map(response => {});
 	};
 
 	mediaItems = [{
