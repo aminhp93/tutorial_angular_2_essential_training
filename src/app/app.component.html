@@ -1,7 +1,11 @@
 <section>
 	<header>
+		<div>{{ mediaItem | categoryList}}</div>
 		<h1>Media Watch List</h1>
 		<p class="description">Keeping track of the media I want to watch</p>
 	</header>
-	<media-item [mediaItem]="firstMediaItem" (delete)="onMediaItemDelete($event)"></media-item>
+	<media-item
+		[ngClass]="{ 'medium-movies': mediaItem.medium==='series1', 'medium-series': mediaItem.medium==='series2' }" 
+		*ngFor="let mediaItem of mediaItems" 
+		[mediaItem]="mediaItem" (delete)="onMediaItemDelete($event)"></media-item>
 </section>

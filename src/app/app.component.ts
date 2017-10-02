@@ -7,17 +7,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
   onMediaItemDelete(mediaItem){
   	
   };
 
-  firstMediaItem = {
+  mediaItems = [{
   	id: 1,
-  	name: "firebug",
-  	medium: "series",
-  	category: "category",
-  	year: 2010,
-  	watchedOn: 124555,
+  	name: "firebug1",
+  	medium: "series1",
+  	category: "category1",
+  	year: 2011,
+  	watchedOn: 11111,
   	isFavorite: false
+  },
+  {
+    id: 2,
+    name: "firebug2",
+    medium: "series2",
+    category: "category2",
+    year: 2012,
+    watchedOn: 22222,
+    isFavorite: false
   }
+  ]
 }
