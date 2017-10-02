@@ -1,0 +1,1 @@
+<media-item [ngClass]="{ 'medium-movies': mediaItem.medium==='series1', 'medium-series': mediaItem.medium==='series2' }" *ngFor="let mediaItem of mediaItems" [mediaItem]="mediaItem" (delete)="onMediaItemDelete($event)"></media-item>

@@ -4,8 +4,7 @@
 		<h1>Media Watch List</h1>
 		<p class="description">Keeping track of the media I want to watch</p>
 	</header>
-	<media-item
-		[ngClass]="{ 'medium-movies': mediaItem.medium==='series1', 'medium-series': mediaItem.medium==='series2' }" 
-		*ngFor="let mediaItem of mediaItems" 
-		[mediaItem]="mediaItem" (delete)="onMediaItemDelete($event)"></media-item>
+	<mw-media-item-form></mw-media-item-form>
+	<mw-media-item-list></mw-media-item-list>
+	
 </section>
